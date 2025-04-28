@@ -8,6 +8,7 @@ import { Text } from "react-native";
 export default function Repro() {
   const [show1, setShow1] = useState(false);
   const [show2, setShow2] = useState(false);
+  const [show3, setShow3] = useState(false);
 
   return (
     <View
@@ -30,7 +31,11 @@ export default function Repro() {
           alignItems: "center",
         }}
       >
-        <Button title="Show" onPress={() => setShow1(true)} color="#007AFF" />
+        <Button
+          title="Show (anim on inner)"
+          onPress={() => setShow1(true)}
+          color="#007AFF"
+        />
         {show1 && (
           <View
             style={{
@@ -76,11 +81,51 @@ export default function Repro() {
         }}
       >
         <Button
-          title="Show (no animation)"
+          title="Show (anim on outer)"
           onPress={() => setShow2(true)}
           color="#007AFF"
         />
         {show2 && (
+          <Animated.View
+            entering={ZoomIn}
+            exiting={ZoomOut}
+            style={{
+              backgroundColor: "cornflowerblue",
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              padding: 16,
+              zIndex: 1,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Button
+              title="Hide"
+              onPress={() => setShow2(false)}
+              color="white"
+            />
+          </Animated.View>
+        )}
+      </View>
+      <View
+        style={{
+          width: 200,
+          height: 200,
+          backgroundColor: "white",
+          position: "relative",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Button
+          title="Show (no animation)"
+          onPress={() => setShow3(true)}
+          color="#007AFF"
+        />
+        {show3 && (
           <View
             style={{
               backgroundColor: "cornflowerblue",
@@ -105,7 +150,7 @@ export default function Repro() {
             >
               <Button
                 title="Hide"
-                onPress={() => setShow2(false)}
+                onPress={() => setShow3(false)}
                 color="white"
               />
             </View>
