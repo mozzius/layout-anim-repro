@@ -1,4 +1,12 @@
 {
   "name": "layout-anim-repro",
-  "slug": "layout-anim-repro"
+  "slug": "layout-anim-repro",
+  "newArchEnabled": false,
+  "android": {
+    "package": "com.mozzius.layoutanimrepro"
+  },
+  "ios": {
+    "bundleIdentifier": "com.mozzius.layoutanimrepro"
+  },
+  "plugins": ["expo-dev-client"]
 }
