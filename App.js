@@ -2,7 +2,6 @@ import Animated, { ZoomIn, ZoomOut } from "react-native-reanimated";
 import { View, Pressable } from "react-native";
 import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { Platform } from "react-native";
 import { Text } from "react-native";
 
 export default function Repro() {
