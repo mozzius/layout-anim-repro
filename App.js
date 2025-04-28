@@ -1,7 +1,9 @@
 import Animated, { ZoomIn, ZoomOut } from "react-native-reanimated";
-import { View, Button } from "react-native";
+import { View, Pressable } from "react-native";
 import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
+import { Platform } from "react-native";
+import { Text } from "react-native";
 
 export default function Repro() {
   const [show1, setShow1] = useState(false);
@@ -28,7 +30,7 @@ export default function Repro() {
           alignItems: "center",
         }}
       >
-        <Button title="Show" onPress={() => setShow1(true)} />
+        <Button title="Show" onPress={() => setShow1(true)} color="#007AFF" />
         {show1 && (
           <View
             style={{
@@ -39,6 +41,7 @@ export default function Repro() {
               right: 0,
               bottom: 0,
               padding: 16,
+              zIndex: 1,
             }}
           >
             <Animated.View
@@ -72,7 +75,11 @@ export default function Repro() {
           alignItems: "center",
         }}
       >
-        <Button title="Show (no animation)" onPress={() => setShow2(true)} />
+        <Button
+          title="Show (no animation)"
+          onPress={() => setShow2(true)}
+          color="#007AFF"
+        />
         {show2 && (
           <View
             style={{
@@ -83,6 +90,7 @@ export default function Repro() {
               right: 0,
               bottom: 0,
               padding: 16,
+              zIndex: 1,
             }}
           >
             <View
@@ -105,5 +113,13 @@ export default function Repro() {
         )}
       </View>
     </View>
+  );
+}
+
+function Button({ title, onPress, color }) {
+  return (
+    <Pressable onPress={onPress} hitSlop={20}>
+      <Text style={{ fontSize: 16, color }}>{title}</Text>
+    </Pressable>
   );
 }
